@@ -20,6 +20,12 @@ const GlobalStyle = createGlobalStyle`
     margin:0 auto;
     font-family: 'Noto Sans KR', sans-serif;
   }
+
+  button{
+    border: 0;
+    outline: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
 `;
 
 export default GlobalStyle;
