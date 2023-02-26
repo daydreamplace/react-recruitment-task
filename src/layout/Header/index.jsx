@@ -16,7 +16,11 @@ const Header = () => {
           <div className="button-wrapper">
             <div className="level">
               {levelList.map((level) => (
-                <div className={level.name} onClick={handleLevel}>
+                <div
+                  key={level.level}
+                  className={level.name}
+                  onClick={handleLevel}
+                >
                   {level.level}
                 </div>
               ))}
