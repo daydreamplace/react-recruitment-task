@@ -1,11 +1,14 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { levelList } from "../../constant/level";
 import logo from "../../assets/logo.png";
 
 const Header = () => {
-  const handleLevel = () => {
-    console.log(1);
+  const [selectedLevel, setSelectedLevel] = useState(0);
+
+  const handleLevel = (index) => {
+    setSelectedLevel(index);
   };
 
   return (
@@ -16,13 +19,16 @@ const Header = () => {
           <div className="button-wrapper">
             <div className="level">
               {levelList.map((level) => (
-                <div
-                  key={level.level}
-                  className={level.name}
-                  onClick={handleLevel}
+                <button
+                  key={level.id}
+                  className={
+                    level.name +
+                    `${selectedLevel === level.id ? level.active : ""}`
+                  }
+                  onClick={() => handleLevel(level.id)}
                 >
                   {level.level}
-                </div>
+                </button>
               ))}
             </div>
             <div className="login-wrapper">
@@ -76,7 +82,7 @@ const HeaderContainer = styled.div`
         width: 211px;
         height: 30px;
         margin-right: 32px;
-        margin-top: 8px;
+        margin-top: 4px;
         border-radius: 35px;
         background-color: rgb(30, 30, 30);
         text-align: center;
@@ -86,12 +92,30 @@ const HeaderContainer = styled.div`
         .advanced {
           width: 33.3%;
           height: 30px;
-          padding-top: 6px;
+          padding-bottom: 3px;
           border-radius: 35px;
           background-color: inherit;
           font-size: 14px;
           font-weight: 300;
           cursor: pointer;
+        }
+
+        .beginner-active {
+          background-color: rgb(236, 200, 38);
+          color: black;
+          font-weight: 500;
+        }
+
+        .intermediate-active {
+          background-color: rgb(236, 97, 38);
+          color: black;
+          font-weight: 500;
+        }
+
+        .advanced-active {
+          background-color: rgb(236, 38, 38);
+          color: black;
+          font-weight: 500;
         }
       }
 
