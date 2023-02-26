@@ -3,11 +3,13 @@ import styled from "styled-components";
 import logo from "../../assets/logo.png";
 
 const Header = () => {
+  const handleLevel = () => {};
+
   return (
     <Positioner>
       <HeaderContainer>
         <header>
-          <img src={logo} />
+          <img src={logo} alt="logo" />
           <div className="button-wrapper">
             <div className="level">
               <div className="beginner">초급</div>
@@ -68,7 +70,6 @@ const HeaderContainer = styled.div`
         margin-top: 8px;
         border-radius: 35px;
         background-color: rgb(30, 30, 30);
-        background-color: #fff;
         text-align: center;
 
         .beginner,
@@ -76,10 +77,12 @@ const HeaderContainer = styled.div`
         .advanced {
           width: 33.3%;
           height: 30px;
-          padding-top: 4px;
+          padding-top: 6px;
           border-radius: 35px;
+          background-color: inherit;
           font-size: 14px;
           font-weight: 300;
+          cursor: pointer;
         }
       }
 
