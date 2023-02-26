@@ -47,7 +47,7 @@ const Positioner = styled.div`
   display: flex;
   width: 100%;
   height: 374px;
-  background: rgb(0, 0, 0);
+  background: ${({ theme }) => theme.black};
   -webkit-box-pack: center;
   justify-content: center;
   -webkit-box-align: center;
@@ -79,14 +79,14 @@ const FooterContainer = styled.div`
 
       p {
         margin: 14px 0;
-        color: rgb(159, 159, 159);
+        color: ${({ theme }) => theme.lightGray};
         font-size: 14px;
         font-weight: 300;
       }
 
       .copy-right {
         margin: 28px 0px 50px;
-        color: rgb(110, 110, 110);
+        color: ${({ theme }) => theme.darkGray};
       }
     }
 
@@ -99,8 +99,8 @@ const FooterContainer = styled.div`
       margin-top: 50px;
 
       .cafe-link {
-        border-bottom: 1px solid rgb(110, 110, 110);
-        color: rgb(159, 159, 159);
+        border-bottom: 1px solid ${({ theme }) => theme.darkGray};
+        color: ${({ theme }) => theme.darkGray};
         text-decoration: none;
         text-align: start;
         font-size: 14px;
@@ -110,7 +110,7 @@ const FooterContainer = styled.div`
       .link {
         display: block;
         text-align: end;
-        color: rgb(110, 110, 110);
+        color: ${({ theme }) => theme.darkGray};
         font-size: 14px;
         font-weight: 300;
         cursor: pointer;

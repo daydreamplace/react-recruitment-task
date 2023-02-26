@@ -53,7 +53,7 @@ const Positioner = styled.div`
   top: 0px;
   z-index: 99;
   width: 100%;
-  background: rgb(14, 14, 14);
+  background: ${({ theme }) => theme.backgroundColor};
 `;
 
 const HeaderContainer = styled.div`
@@ -63,7 +63,7 @@ const HeaderContainer = styled.div`
   -webkit-box-align: center;
   align-items: center;
   width: 100%;
-  border-bottom: 1px solid rgb(30, 30, 30);
+  border-bottom: 1px solid ${({ theme }) => theme.borderColor};
 
   header {
     display: flex;
@@ -90,7 +90,7 @@ const HeaderContainer = styled.div`
         margin-right: 32px;
         margin-top: 4px;
         border-radius: 35px;
-        background-color: rgb(30, 30, 30);
+        background-color: ${({ theme }) => theme.borderColor};
         text-align: center;
 
         .beginner,
@@ -107,19 +107,19 @@ const HeaderContainer = styled.div`
         }
 
         .beginner-active {
-          background-color: rgb(236, 200, 38);
+          background-color: ${({ theme }) => theme.yellow};
           color: black;
           font-weight: 500;
         }
 
         .intermediate-active {
-          background-color: rgb(236, 97, 38);
+          background-color: ${({ theme }) => theme.orange};
           color: black;
           font-weight: 500;
         }
 
         .advanced-active {
-          background-color: rgb(236, 38, 38);
+          background-color: ${({ theme }) => theme.red};
           color: black;
           font-weight: 500;
         }
@@ -130,7 +130,7 @@ const HeaderContainer = styled.div`
           height: 20px;
           font-size: 14px;
           font-weight: 500;
-          color: rgb(236, 38, 38);
+          color: ${({ theme }) => theme.red};
           cursor: pointer;
         }
       }
