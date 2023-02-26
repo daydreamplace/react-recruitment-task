@@ -1,4 +1,4 @@
-export const level = [
+export const levelList = [
   {
     name: "beginner",
     level: "초급",

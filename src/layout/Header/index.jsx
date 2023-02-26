@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { levelList } from "../../constant/level";
 import logo from "../../assets/logo.png";
 
 const Header = () => {
-  const handleLevel = () => {};
+  const handleLevel = () => {
+    console.log(1);
+  };
 
   return (
     <Positioner>
@@ -12,9 +15,11 @@ const Header = () => {
           <img src={logo} alt="logo" />
           <div className="button-wrapper">
             <div className="level">
-              <div className="beginner">초급</div>
-              <div className="intermediate">중급</div>
-              <div className="advanced">고급</div>
+              {levelList.map((level) => (
+                <div className={level.name} onClick={handleLevel}>
+                  {level.level}
+                </div>
+              ))}
             </div>
             <div className="login-wrapper">
               <Link to="login">로그인 하러가기</Link>
