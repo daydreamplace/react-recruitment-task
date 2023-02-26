@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { levelList } from "../../constant/level";
 import logo from "../../assets/logo.png";
+import Category from "./Category";
 
 const Header = () => {
   const [selectedLevel, setSelectedLevel] = useState(
@@ -43,6 +44,7 @@ const Header = () => {
           </div>
         </header>
       </HeaderContainer>
+      <Category />
     </Positioner>
   );
 };

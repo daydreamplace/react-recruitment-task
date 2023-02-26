@@ -24,16 +24,25 @@ const Footer = () => {
             </p>
           </div>
           <div className="link-wrapper">
-            <a className="cafe-link" href="https://cafe.naver.com/quantus">
+            <a
+              className="cafe-link"
+              href="https://cafe.naver.com/quantus"
+              target="_blank"
+            >
               공식 카페 바로가기
             </a>
             <a
               className="link"
               href="https://www.quantus.kr/service/useservice"
+              target="_blank"
             >
               개인정보처리방침
             </a>
-            <a className="link" href="https://www.quantus.kr/service">
+            <a
+              className="link"
+              href="https://www.quantus.kr/service"
+              target="_blank"
+            >
               이용약관
             </a>
           </div>
