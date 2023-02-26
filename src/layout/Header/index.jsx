@@ -1,11 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { levelList } from "../../constant/level";
 import logo from "../../assets/logo.png";
 
 const Header = () => {
-  const [selectedLevel, setSelectedLevel] = useState(0);
+  const [selectedLevel, setSelectedLevel] = useState(
+    parseInt(localStorage.getItem("selectedLevel")) || 1
+  );
+
+  useEffect(() => {
+    localStorage.setItem("selectedLevel", selectedLevel);
+  }, [selectedLevel]);
 
   const handleLevel = (index) => {
     setSelectedLevel(index);
