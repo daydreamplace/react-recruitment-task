@@ -1,22 +1,42 @@
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Button from "../Button";
 
+const STRATEGY_TITLE = localStorage.getItem("strategyTitle");
+
 const StrategyTitle = () => {
+  const [title, setTitle] = useState(STRATEGY_TITLE || "");
+  const [isTitle, setIsTitle] = useState(Boolean(STRATEGY_TITLE));
+
+  useEffect(() => {
+    localStorage.setItem("strategyTitle", title);
+  }, [title, isTitle]);
+
+  const handleTitle = (e) => {
+    let title = e.target.value;
+    setTitle(title);
+    title.length >= 1 ? setIsTitle(true) : setIsTitle(false);
+  };
+
   return (
     <StrategyTitleArea>
       <div className="strategy-area-wrapper">
         <div className="strategy-area">
           <div className="input-wrapper">
-            <input placeholder="전략 이름을 입력해주세요." />
+            <input
+              placeholder="전략 이름을 입력해주세요."
+              value={title}
+              onChange={handleTitle}
+            />
           </div>
           <div className="button-wrapper">
             <Button
               title="전략 저장"
-              color="orange"
+              color={isTitle ? "orange" : "dark-gray"}
               onClick={() => {
                 console.log(1);
               }}
-              // disabled={false}
+              disabled={isTitle}
             />
           </div>
         </div>
@@ -62,8 +82,6 @@ const StrategyTitleArea = styled.div`
       }
 
       .button-wrapper {
-        button {
-        }
       }
     }
   }

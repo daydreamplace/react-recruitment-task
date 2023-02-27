@@ -9,21 +9,24 @@ const Button = ({ color, title, onClick, disabled }) => {
 };
 
 const ButtonContainer = styled.div`
+  position: relative;
   display: inline-flex;
   -webkit-box-pack: center;
   justify-content: center;
   -webkit-box-align: center;
   align-items: center;
+  width: 136px;
+  height: 46px;
   padding-left: 20px;
   padding-right: 20px;
   border-radius: 6px;
-  font-weight: 500;
-  position: relative;
   background-color: ${(props) =>
     props.color === "orange" && (({ theme }) => theme.orange)};
-  width: 136px;
-  height: 46px;
+  background-color: ${(props) =>
+    props.color === "dark-gray" && "rgb(62, 62, 62)"};
+  font-weight: 500;
   cursor: pointer;
+  cursor: ${(props) => props.disabled === false && "not-allowed"};
 
   .button {
     background: transparent;
