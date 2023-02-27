@@ -110,19 +110,19 @@ const HeaderContainer = styled.div`
 
         .beginner-active {
           background-color: ${({ theme }) => theme.yellow};
-          color: black;
+          color: ${({ theme }) => theme.black};
           font-weight: 500;
         }
 
         .intermediate-active {
           background-color: ${({ theme }) => theme.orange};
-          color: black;
+          color: ${({ theme }) => theme.black};
           font-weight: 500;
         }
 
         .advanced-active {
           background-color: ${({ theme }) => theme.red};
-          color: black;
+          color: ${({ theme }) => theme.black};
           font-weight: 500;
         }
       }
