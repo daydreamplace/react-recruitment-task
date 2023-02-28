@@ -15,7 +15,7 @@ const ButtonContainer = styled.div`
   justify-content: center;
   -webkit-box-align: center;
   align-items: center;
-  width: 136px;
+  width: 120px;
   height: 46px;
   padding-left: 20px;
   padding-right: 20px;
@@ -24,6 +24,8 @@ const ButtonContainer = styled.div`
     props.color === "orange" && (({ theme }) => theme.orange)};
   background-color: ${(props) =>
     props.color === "dark-gray" && "rgb(62, 62, 62)"};
+  background-color: ${(props) =>
+    props.color === "black" && (({ theme }) => theme.black)};
   font-weight: 500;
   cursor: pointer;
   cursor: ${(props) => props.disabled === false && "not-allowed"};
@@ -31,6 +33,8 @@ const ButtonContainer = styled.div`
   .button {
     background: transparent;
     color: ${({ theme }) => theme.black};
+    color: ${(props) =>
+      props.color === "black" && (({ theme }) => theme.textColor)};
     text-align: center;
     font-size: 16px;
     font-weight: 400;

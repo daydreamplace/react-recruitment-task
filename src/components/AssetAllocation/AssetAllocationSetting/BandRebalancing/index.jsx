@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { BsPercent } from "react-icons/bs";
 import styled from "styled-components";
+import { BsPercent } from "react-icons/bs";
 import SelectBox from "../../SelectBox";
 
 const BandRebalancing = () => {

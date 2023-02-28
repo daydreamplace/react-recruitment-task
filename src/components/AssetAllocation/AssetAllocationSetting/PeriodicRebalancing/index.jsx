@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import styled from "styled-components";
+import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import SelectBox from "../../SelectBox";
 import DropDown from "../../DropDown";
 import { periodicRebalancingList } from "../../../../constant/periodicrebalancing";
