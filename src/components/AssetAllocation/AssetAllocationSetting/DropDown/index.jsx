@@ -25,8 +25,8 @@ const DropDownContainer = styled.div`
   z-index: 2;
   margin-top: 9px;
   background: ${({ theme }) => theme.backgroundColor};
-  border: 1px solid rgb(82, 82, 82);
-  border-radius: 4px;
+  border: 1px solid ${({ theme }) => theme.darkGray};
+  border-radius: 6px;
 
   .select-option {
     position: relative;
@@ -46,9 +46,14 @@ const DropDownContainer = styled.div`
       cursor: pointer;
     }
 
-    input: hover {
+    input:hover {
       border: none;
       background: rgba(255, 255, 255, 0.08);
+    }
+
+    input:focus {
+      outline: none;
+      background: rgba(236, 97, 38, 0.3);
     }
   }
 `;
