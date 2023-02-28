@@ -47,7 +47,7 @@ const StrategyTitle = () => {
 
 const StrategyTitleArea = styled.div`
   position: sticky;
-  top: 140px;
+  top: 138px;
   display: flex;
   justify-content: space-between;
   z-index: 10;

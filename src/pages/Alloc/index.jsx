@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import StrategyTitle from "../../components/StrategyTitle";
+import AssetAllocation from "../../components/AssetAllocation";
 
 const Alloc = () => {
   return (
     <Positioner>
       <AllocContainer>
         <StrategyTitle />
+        <AssetAllocation />
       </AllocContainer>
     </Positioner>
   );
