@@ -19,7 +19,7 @@ const SelectBox = ({
     setIsActive(false);
     setTimeout(() => {
       setIsDropDown(false);
-    }, 200);
+    }, 100);
   };
 
   return (
@@ -34,7 +34,7 @@ const SelectBox = ({
           handleBlur();
         }}
         className={isActive ? "active" : ""}
-        // value={isActive ? value : ""}
+        defaultValue={value}
         // onChange={onChange}
       />
       <div className="icon" onClick={onClick}>

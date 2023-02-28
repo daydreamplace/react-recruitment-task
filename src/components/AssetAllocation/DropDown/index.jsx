@@ -1,20 +1,13 @@
 import styled from "styled-components";
 
-const DropDown = ({ setIsDropDown }) => {
+const DropDown = ({ dropDownList }) => {
   return (
     <DropDownContainer>
-      <div className="select-option">
-        <input readOnly value="1" onClick={() => console.log(11)} />
-      </div>
-      <div className="select-option">
-        <input readOnly value="1" />
-      </div>
-      <div className="select-option">
-        <input readOnly value="1" />
-      </div>
-      <div className="select-option">
-        <input readOnly value="1" />
-      </div>
+      {dropDownList.map((option) => (
+        <div key={option.id} className="select-option">
+          <input readOnly value={option.name} />
+        </div>
+      ))}
     </DropDownContainer>
   );
 };

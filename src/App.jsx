@@ -15,7 +15,7 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Alloc />} />
-        <Route path="/login" element={<Any />} />
+        <Route path="/*" element={<Any />} />
       </Routes>
       <Footer />
     </ThemeProvider>

@@ -2,7 +2,8 @@ import { useState } from "react";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import styled from "styled-components";
 import SelectBox from "../../SelectBox";
-import DropDown from "../DropDown";
+import DropDown from "../../DropDown";
+import { assetAllocationAlgorithmList } from "../../../../constant/assetallocationalgorithm";
 
 const AssetAllocationAlgorithm = () => {
   const [isDropDown, setIsDropDown] = useState(false);
@@ -25,8 +26,14 @@ const AssetAllocationAlgorithm = () => {
         }
         onClick={onClick}
         setIsDropDown={setIsDropDown}
+        value={assetAllocationAlgorithmList[0].name}
       />
-      {isDropDown && <DropDown setIsDropDown={setIsDropDown} />}
+      {isDropDown && (
+        <DropDown
+          setIsDropDown={setIsDropDown}
+          dropDownList={assetAllocationAlgorithmList}
+        />
+      )}
     </AssetAllocationAlgorithmContainer>
   );
 };

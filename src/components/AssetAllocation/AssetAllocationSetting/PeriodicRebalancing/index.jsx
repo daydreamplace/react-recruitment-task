@@ -2,7 +2,8 @@ import { useState } from "react";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import styled from "styled-components";
 import SelectBox from "../../SelectBox";
-import DropDown from "../DropDown";
+import DropDown from "../../DropDown";
+import { periodicRebalancingList } from "../../../../constant/periodicrebalancing";
 
 const PeriodicRebalancing = () => {
   const [isDropDown, setIsDropDown] = useState(false);
@@ -25,8 +26,14 @@ const PeriodicRebalancing = () => {
         }
         onClick={onClick}
         setIsDropDown={setIsDropDown}
+        value={periodicRebalancingList[0].name}
       />
-      {isDropDown && <DropDown />}
+      {isDropDown && (
+        <DropDown
+          setIsDropDown={setIsDropDown}
+          dropDownList={periodicRebalancingList}
+        />
+      )}
     </PeriodicRebalancingContainer>
   );
 };
