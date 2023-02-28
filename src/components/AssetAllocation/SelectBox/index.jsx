@@ -27,7 +27,9 @@ const SelectBox = ({ readOnly, icon, onClick, onChange, value }) => {
         // value={isActive ? value : ""}
         // onChange={onChange}
       />
-      <div className="icon">{icon}</div>
+      <div className="icon" onClick={onClick}>
+        {icon}
+      </div>
     </SelectBoxContainer>
   );
 };
