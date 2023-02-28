@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-const DropDown = () => {
+const DropDown = ({ setIsDropDown }) => {
   return (
     <DropDownContainer>
       <div className="select-option">
-        <input readOnly value="1" />
+        <input readOnly value="1" onClick={() => console.log(11)} />
       </div>
       <div className="select-option">
         <input readOnly value="1" />

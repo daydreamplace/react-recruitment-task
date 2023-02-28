@@ -1,19 +1,29 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-const SelectBox = ({ readOnly, icon, onClick, onChange, value }) => {
+const SelectBox = ({
+  readOnly,
+  icon,
+  onClick,
+  onChange,
+  value,
+  setIsDropDown,
+}) => {
   const [isActive, setIsActive] = useState(false);
 
-  const handleFocus = (e) => {
+  const handleFocus = () => {
     setIsActive(true);
   };
 
-  const handleBlur = (e) => {
+  const handleBlur = () => {
     setIsActive(false);
+    setTimeout(() => {
+      setIsDropDown(false);
+    }, 200);
   };
 
   return (
-    <SelectBoxContainer>
+    <SelectBoxContainer isActive={isActive}>
       <input
         readOnly={readOnly}
         onClick={onClick}
@@ -52,7 +62,7 @@ const SelectBoxContainer = styled.div`
   }
 
   input:hover {
-    border: 1px solid ${({ theme }) => theme.textColor};
+    /* border: 1px solid ${({ theme }) => theme.textColor}; */
   }
 
   .active {

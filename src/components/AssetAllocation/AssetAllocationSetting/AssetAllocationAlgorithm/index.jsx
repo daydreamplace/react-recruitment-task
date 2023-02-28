@@ -24,8 +24,9 @@ const AssetAllocationAlgorithm = () => {
           )
         }
         onClick={onClick}
+        setIsDropDown={setIsDropDown}
       />
-      {isDropDown && <DropDown />}
+      {isDropDown && <DropDown setIsDropDown={setIsDropDown} />}
     </AssetAllocationAlgorithmContainer>
   );
 };
