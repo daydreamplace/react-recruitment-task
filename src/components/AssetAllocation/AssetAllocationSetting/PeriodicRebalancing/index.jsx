@@ -8,7 +8,7 @@ import { periodicRebalancingList } from "../../../../constant/periodicrebalancin
 const PeriodicRebalancing = () => {
   const [isDropDown, setIsDropDown] = useState(false);
 
-  const onClick = () => {
+  const handleDropDown = () => {
     setIsDropDown(!isDropDown);
   };
 
@@ -19,12 +19,12 @@ const PeriodicRebalancing = () => {
         readOnly={true}
         icon={
           isDropDown ? (
-            <IoIosArrowUp onClick={onClick} />
+            <IoIosArrowUp onClick={handleDropDown} />
           ) : (
-            <IoIosArrowDown onClick={onClick} />
+            <IoIosArrowDown onClick={handleDropDown} />
           )
         }
-        onClick={onClick}
+        onClick={handleDropDown}
         setIsDropDown={setIsDropDown}
         value={periodicRebalancingList[0].name}
       />

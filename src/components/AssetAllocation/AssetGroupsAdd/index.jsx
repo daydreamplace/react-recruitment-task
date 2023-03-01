@@ -1,66 +1,43 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import AssetGroup from "./AssetGroup";
 import Button from "../../Button";
 import SelectBox from "../SelectBox";
 import DropDown from "../DropDown";
 
+const ASSET_GROUP = localStorage.getItem("assetGroup");
+
 const AssetGroupsAdd = () => {
-  const [add, setAdd] = useState(0);
+  const [add, setAdd] = useState(Number(ASSET_GROUP));
   const [isAdd, setIsAdd] = useState(false);
-  const [isDropDown, setIsDropDown] = useState(false);
+
+  // useEffect(() => {
+  // ASSET_GROUP ? setIsAdd(false) : setIsAdd(true);
+  // }, [add]);
+
+  // console.log("자산군개수추가", add);
+  // console.log("로컬 자산 수", ASSET_GROUP);
+  console.log("자산 수가 0개면 false", isAdd);
 
   const handleAdd = () => {
-    setAdd(add + 1);
-    console.log(add);
+    setIsAdd(true);
   };
 
-  const onClick = () => {
-    setIsDropDown(!isDropDown);
+  const removeAsset = () => {
+    setIsAdd(false);
   };
 
   return (
     <AssetGroupsAddContainer>
-      {/* <Button onClick={handleAdd} title="추가하기" color="orange" /> */}
-      <h3 className="asset">자산 01</h3>
-      <AssetGroup
-        onClick={onClick}
-        isDropDown={isDropDown}
-        setIsDropDown={setIsDropDown}
-      />
-      {isDropDown && <DropDown setIsDropDown={setIsDropDown} />}
+      {isAdd ? (
+        <AssetGroup handleAdd={handleAdd} removeAsset={removeAsset} />
+      ) : (
+        <Button onClick={handleAdd} title="추가하기" color="orange" />
+      )}
     </AssetGroupsAddContainer>
   );
 };
 
-const AssetGroupsAddContainer = styled.div`
-  .asset {
-    margin-top: 14px;
-    margin-bottom: 18px;
-    font-size: 16px;
-    font-weight: 500;
-  }
-
-  .percent {
-    margin-top: 38px;
-    margin-bottom: 18px;
-    color: ${({ theme }) => theme.textColor};
-    font-size: 16px;
-  }
-
-  p {
-    margin: 18px 0;
-    color: ${({ theme }) => theme.lightGray};
-    font-size: 12px;
-  }
-
-  .button-wrapper {
-    margin: 40px 0 20px;
-
-    div + div {
-      margin-left: 32px;
-    }
-  }
-`;
+const AssetGroupsAddContainer = styled.div``;
 
 export default AssetGroupsAdd;

@@ -8,7 +8,7 @@ import { assetAllocationAlgorithmList } from "../../../../constant/assetallocati
 const AssetAllocationAlgorithm = () => {
   const [isDropDown, setIsDropDown] = useState(false);
 
-  const onClick = () => {
+  const handleDropDown = () => {
     setIsDropDown(!isDropDown);
   };
 
@@ -19,12 +19,12 @@ const AssetAllocationAlgorithm = () => {
         readOnly={true}
         icon={
           isDropDown ? (
-            <IoIosArrowUp onClick={onClick} />
+            <IoIosArrowUp onClick={handleDropDown} />
           ) : (
-            <IoIosArrowDown onClick={onClick} />
+            <IoIosArrowDown onClick={handleDropDown} />
           )
         }
-        onClick={onClick}
+        onClick={handleDropDown}
         setIsDropDown={setIsDropDown}
         value={assetAllocationAlgorithmList[0].name}
       />
