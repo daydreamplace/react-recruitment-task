@@ -18,34 +18,28 @@ const SetPeriod = () => {
         <Calendar
           renderCustomHeader={({ date, changeYear, changeMonth }) => (
             <div className="calendar-header">
-              <div>
-                <select
-                  value={getYear(date)}
-                  onChange={({ target: { value } }) =>
-                    changeYear(Number(value))
-                  }
-                >
-                  {yearList.map((option) => (
-                    <option key={option} value={option}>
-                      {option}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div className="">
-                <select
-                  value={monthList[getMonth(date)]}
-                  onChange={({ target: { value } }) =>
-                    changeMonth(monthList.indexOf(value))
-                  }
-                >
-                  {monthList.map((option) => (
-                    <option key={option} value={option}>
-                      {option}
-                    </option>
-                  ))}
-                </select>
-              </div>
+              <select
+                value={getYear(date)}
+                onChange={({ target: { value } }) => changeYear(Number(value))}
+              >
+                {yearList.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+              <select
+                value={monthList[getMonth(date)]}
+                onChange={({ target: { value } }) =>
+                  changeMonth(monthList.indexOf(value))
+                }
+              >
+                {monthList.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
             </div>
           )}
           shouldCloseOnSelect
@@ -63,34 +57,28 @@ const SetPeriod = () => {
         <Calendar
           renderCustomHeader={({ date, changeYear, changeMonth }) => (
             <div className="calendar-header">
-              <div>
-                <select
-                  value={getYear(date)}
-                  onChange={({ target: { value } }) =>
-                    changeYear(Number(value))
-                  }
-                >
-                  {yearList.map((option) => (
-                    <option key={option} value={option}>
-                      {option}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div className="">
-                <select
-                  value={monthList[getMonth(date)]}
-                  onChange={({ target: { value } }) =>
-                    changeMonth(monthList.indexOf(value))
-                  }
-                >
-                  {monthList.map((option) => (
-                    <option key={option} value={option}>
-                      {option}
-                    </option>
-                  ))}
-                </select>
-              </div>
+              <select
+                value={getYear(date)}
+                onChange={({ target: { value } }) => changeYear(Number(value))}
+              >
+                {yearList.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+              <select
+                value={monthList[getMonth(date)]}
+                onChange={({ target: { value } }) =>
+                  changeMonth(monthList.indexOf(value))
+                }
+              >
+                {monthList.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
             </div>
           )}
           shouldCloseOnSelect
@@ -171,7 +159,7 @@ const SetPeriodContainer = styled.div`
         border-radius: 10px;
       }
 
-      div + div {
+      select + select {
         margin-left: 10px;
       }
     }
