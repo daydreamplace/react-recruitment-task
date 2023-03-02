@@ -5,11 +5,12 @@ const SelectBox = ({
   readOnly,
   icon,
   onClick,
-  onChange,
-  value,
+  // onChange,
+  // value,
   setIsDropDown,
 }) => {
   const [isActive, setIsActive] = useState(false);
+  const [value, setValue] = useState("");
 
   const handleFocus = () => {
     setIsActive(true);
@@ -20,6 +21,12 @@ const SelectBox = ({
     setTimeout(() => {
       setIsDropDown(false);
     }, 100);
+  };
+
+  const onChange = (e) => {
+    setValue(e.target.value);
+
+    console.log(value);
   };
 
   return (
@@ -34,8 +41,8 @@ const SelectBox = ({
           handleBlur();
         }}
         className={isActive ? "active" : ""}
-        defaultValue={value}
-        // onChange={onChange}
+        // defaultValue={value}
+        onChange={onChange}
       />
       <div className="icon" onClick={onClick}>
         {icon}

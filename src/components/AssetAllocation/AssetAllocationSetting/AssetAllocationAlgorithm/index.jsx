@@ -12,6 +12,8 @@ const AssetAllocationAlgorithm = () => {
     setIsDropDown(!isDropDown);
   };
 
+  // assetAllocationAlgorithmList[0].name
+
   return (
     <AssetAllocationAlgorithmContainer>
       <div className="sub-title">자산배분 알고리즘</div>
@@ -26,7 +28,7 @@ const AssetAllocationAlgorithm = () => {
         }
         onClick={handleDropDown}
         setIsDropDown={setIsDropDown}
-        value={assetAllocationAlgorithmList[0].name}
+        // value={}
       />
       {isDropDown && (
         <DropDown
