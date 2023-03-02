@@ -9,7 +9,6 @@ const GlobalStyle = createGlobalStyle`
     margin-right: 0px;
     margin-left: 0px;
     background-color: ${({ theme }) => theme.backgroundColor};
-    color: ${({ theme }) => theme.textColor};
   }
   
   a {

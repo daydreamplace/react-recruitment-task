@@ -149,6 +149,7 @@ const SetPeriodContainer = styled.div`
         background: ${({ theme }) => theme.borderColor};
         border: none;
         outline: none;
+        color: ${({ theme }) => theme.textColor};
         font-size: 20px;
         font-weight: 700;
         cursor: pointer;

@@ -1,8 +1,13 @@
 import styled from "styled-components";
 
-const Button = ({ color, title, onClick, disabled }) => {
+const Button = ({ color, title, onClick, disabled, className }) => {
   return (
-    <ButtonContainer color={color} onClick={onClick} disabled={disabled}>
+    <ButtonContainer
+      color={color}
+      onClick={onClick}
+      disabled={disabled}
+      className={className}
+    >
       <div className="button">{title}</div>
     </ButtonContainer>
   );
@@ -35,6 +40,8 @@ const ButtonContainer = styled.div`
     color: ${({ theme }) => theme.black};
     color: ${(props) =>
       props.color === "black" && (({ theme }) => theme.textColor)};
+    color: ${(props) =>
+      props.color === "reset" && (({ theme }) => theme.textColor)};
     text-align: center;
     font-size: 16px;
     font-weight: 400;
