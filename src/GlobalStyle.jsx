@@ -8,8 +8,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     margin-right: 0px;
     margin-left: 0px;
-    background-color: #000;
-    color: #fff;
+    background-color: ${({ theme }) => theme.backgroundColor};
   }
   
   a {
@@ -19,6 +18,11 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin:0 auto;
     font-family: 'Noto Sans KR', sans-serif;
+  }
+
+  input {
+    border: 0;
+    outline: 0;
   }
 
   button{

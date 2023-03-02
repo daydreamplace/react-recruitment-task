@@ -70,9 +70,11 @@ const FooterContainer = styled.div`
     display: flex;
     -webkit-box-pack: justify;
     justify-content: space-between;
+    background: ${({ theme }) => theme.black};
 
     .info-wrapper {
       margin-top: 50px;
+      background: inherit;
 
       img {
         width: 156px;
@@ -84,10 +86,12 @@ const FooterContainer = styled.div`
         margin-bottom: 16px;
         font-size: 17px;
         font-weight: 500;
+        background: inherit;
       }
 
       p {
         margin: 14px 0;
+        background: inherit;
         color: ${({ theme }) => theme.lightGray};
         font-size: 14px;
         font-weight: 300;
@@ -95,6 +99,7 @@ const FooterContainer = styled.div`
 
       .copy-right {
         margin: 28px 0px 50px;
+        background: inherit;
         color: ${({ theme }) => theme.darkGray};
       }
     }
