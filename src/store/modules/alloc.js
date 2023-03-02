@@ -15,10 +15,11 @@ const alloc = createSlice({
   initialState: initialState,
   reducers: {
     setAlloc: (state, action) => {
-      state.[action.payload.type] = action.payload.value;
+      state[action.payload.type] = action.payload.value;
     },
+    initialize: () => initialState,
   },
 });
 
-export const { setAlloc } = alloc.actions;
+export const { setAlloc, initialize } = alloc.actions;
 export const allocReducer = alloc.reducer;

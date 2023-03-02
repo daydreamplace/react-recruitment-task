@@ -1,10 +1,12 @@
+import { useSelector, useDispatch } from "react-redux";
+import { setAlloc } from "../../../store/modules/alloc";
 import styled from "styled-components";
 
-const DropDown = ({ dropDownList }) => {
+const DropDown = ({ dropDownList, onClick }) => {
   return (
     <DropDownContainer>
       {dropDownList.map((option) => (
-        <div key={option.id} className="select-option">
+        <div key={option.id} className="select-option" onClick={onClick}>
           <input readOnly value={option.name} />
         </div>
       ))}

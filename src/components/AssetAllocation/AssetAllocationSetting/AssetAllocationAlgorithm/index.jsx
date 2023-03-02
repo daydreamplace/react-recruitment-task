@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setAlloc } from "../../../../store/modules/alloc";
 import styled from "styled-components";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import SelectBox from "../../SelectBox";
@@ -7,12 +9,18 @@ import { assetAllocationAlgorithmList } from "../../../../constant/assetallocati
 
 const AssetAllocationAlgorithm = () => {
   const [isDropDown, setIsDropDown] = useState(false);
+  const [selected, setSelected] = useState();
+  const dispatch = useDispatch();
+  const { algorithm } = useSelector((state) => state.alloc);
 
   const handleDropDown = () => {
     setIsDropDown(!isDropDown);
   };
 
-  // assetAllocationAlgorithmList[0].name
+  const selectMenu = (e) => {
+    let menu = e.target.value;
+    dispatch(setAlloc({ type: "algorithm", value: menu }));
+  };
 
   return (
     <AssetAllocationAlgorithmContainer>
@@ -28,12 +36,13 @@ const AssetAllocationAlgorithm = () => {
         }
         onClick={handleDropDown}
         setIsDropDown={setIsDropDown}
-        // value={}
+        value={algorithm}
       />
       {isDropDown && (
         <DropDown
           setIsDropDown={setIsDropDown}
           dropDownList={assetAllocationAlgorithmList}
+          onClick={selectMenu}
         />
       )}
     </AssetAllocationAlgorithmContainer>
