@@ -34,7 +34,7 @@ const SelectBox = ({
           handleBlur();
         }}
         className={isActive ? "active" : ""}
-        value={value}
+        defaultValue={value}
       />
       <div className="icon" onClick={onClick}>
         {icon}

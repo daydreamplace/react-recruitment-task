@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setAlloc } from "../../../../store/modules/alloc";
 import styled from "styled-components";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import SelectBox from "../../SelectBox";
@@ -7,9 +9,16 @@ import { periodicRebalancingList } from "../../../../constant/periodicrebalancin
 
 const PeriodicRebalancing = () => {
   const [isDropDown, setIsDropDown] = useState(false);
+  const dispatch = useDispatch();
+  const { periodic } = useSelector((state) => state.alloc);
 
   const handleDropDown = () => {
     setIsDropDown(!isDropDown);
+  };
+
+  const selectMenu = (e) => {
+    let menu = e.target.value;
+    dispatch(setAlloc({ type: "periodic", value: menu }));
   };
 
   return (
@@ -26,12 +35,13 @@ const PeriodicRebalancing = () => {
         }
         onClick={handleDropDown}
         setIsDropDown={setIsDropDown}
-        value={periodicRebalancingList[0].name}
+        value={periodic}
       />
       {isDropDown && (
         <DropDown
           setIsDropDown={setIsDropDown}
           dropDownList={periodicRebalancingList}
+          onClick={selectMenu}
         />
       )}
     </PeriodicRebalancingContainer>

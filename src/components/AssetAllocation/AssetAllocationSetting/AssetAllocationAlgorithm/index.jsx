@@ -9,7 +9,6 @@ import { assetAllocationAlgorithmList } from "../../../../constant/assetallocati
 
 const AssetAllocationAlgorithm = () => {
   const [isDropDown, setIsDropDown] = useState(false);
-  const [selected, setSelected] = useState();
   const dispatch = useDispatch();
   const { algorithm } = useSelector((state) => state.alloc);
 
