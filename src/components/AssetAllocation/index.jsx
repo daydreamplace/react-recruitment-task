@@ -34,6 +34,7 @@ const AssetAllocationContainer = styled.div`
   margin: 50px 0;
 
   .title {
+    color: ${({ theme }) => theme.textColor};
     font-size: 19px;
     font-weight: 500;
   }
@@ -84,6 +85,7 @@ const AssetAllocationContainer = styled.div`
       ${({ theme }) => theme.red}
     );
     color: ${({ theme }) => theme.black};
+    font-size: 1;
     font-weight: 700;
     cursor: pointer;
   }

@@ -81,7 +81,7 @@ const SelectBoxContainer = styled.div`
     background: transparent;
 
     svg {
-      color: ${({ theme }) => theme.red};
+      color: ${({ theme }) => theme.orange};
     }
   }
 `;
