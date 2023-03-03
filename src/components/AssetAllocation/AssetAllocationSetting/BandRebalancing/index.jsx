@@ -3,6 +3,7 @@ import { setAlloc } from "../../../../store/modules/alloc";
 import styled from "styled-components";
 import { BsPercent } from "react-icons/bs";
 import SelectBox from "../../SelectBox";
+import DataInput from "../../DataInput";
 
 const BandRebalancing = () => {
   const dispatch = useDispatch();
@@ -24,6 +25,21 @@ const BandRebalancing = () => {
         placeholder="밴드 리밸런싱 기준을 입력해주세요"
         value={band}
       />
+
+      {/* <DataInput
+        icon={<BsPercent />}
+        onChange={onChange}
+        // placeholder="밴드 리밸런싱 기준을 입력해주세요"
+        // value={band}
+      /> */}
+      {/* <input
+        placeholder="밴드 리밸런싱 기준을 입력해주세요"
+        onChange={onChange}
+        value={band}
+      /> */}
+      {/* <div className="icon">
+        <BsPercent />
+      </div> */}
     </BandRebalancingContainer>
   );
 };

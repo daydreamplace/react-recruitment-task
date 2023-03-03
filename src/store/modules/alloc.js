@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   title: "",
-  algorithm: localStorage.getItem("algorithm"),
-  periodic: localStorage.getItem("periodic"),
+  algorithm: localStorage.getItem("algorithm") || "",
+  periodic: localStorage.getItem("periodic") || "",
   band: localStorage.getItem("band"),
   assetsGroup: [{ asset: "", percent: 0 }],
   startDate: "",
