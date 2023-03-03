@@ -6,6 +6,7 @@ const SelectBox = ({
   icon,
   onClick,
   onChange,
+  placeholder,
   value,
   setIsDropDown,
 }) => {
@@ -34,8 +35,9 @@ const SelectBox = ({
           handleBlur();
         }}
         className={isActive ? "active" : ""}
-        defaultValue={value}
-        // onChange={onChange}
+        placeholder={placeholder}
+        onChange={onChange}
+        value={value}
       />
       <div className="icon" onClick={onClick}>
         {icon}
@@ -62,7 +64,7 @@ const SelectBoxContainer = styled.div`
   }
 
   input:hover {
-    /* border: 1px solid ${({ theme }) => theme.textColor}; */
+    border: 1px solid ${({ theme }) => theme.textColor};
   }
 
   .active {
@@ -81,7 +83,7 @@ const SelectBoxContainer = styled.div`
     background: transparent;
 
     svg {
-      color: ${({ theme }) => theme.red};
+      color: ${({ theme }) => theme.orange};
     }
   }
 `;

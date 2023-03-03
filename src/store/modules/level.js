@@ -5,7 +5,7 @@ const level = createSlice({
   initialState: { level: "" },
   reducers: {
     setLevel: (state, action) => {
-      state.email = action.payload;
+      state.level = action.payload;
     },
   },
 });

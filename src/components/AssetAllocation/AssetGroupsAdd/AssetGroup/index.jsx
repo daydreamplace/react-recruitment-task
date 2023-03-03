@@ -48,6 +48,7 @@ const AssetGroupContainer = styled.div`
   .asset {
     margin-top: 14px;
     margin-bottom: 18px;
+    color: ${({ theme }) => theme.textColor};
     font-size: 16px;
     font-weight: 500;
   }
