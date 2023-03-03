@@ -7,20 +7,20 @@ const Footer = () => {
       <FooterContainer>
         <div className="content-wrapper">
           <div className="info-wrapper">
-            {/* <img src={logo} alt="logo" /> */}
-            {/* <p className="title">주식회사 퀀터스테크놀로지스</p> */}
+            <img src={logo} alt="logo" />
+            <p className="title">주식회사 퀀터스테크놀로지스</p>
             <p>
               대표자명: 이재민 ┃ 주소: 서울특별시 강남구 선릉로 93길 54, 6층
               6062호 (역삼동, 일환빌딩)
             </p>
             <p>사업자등록번호: 245-88-02569</p>
-            {/* <p>문의: info@quantus.kr</p> */}
+            <p>문의: info@quantus.kr</p>
             <p>
               Tel: 070-4193-5192 (평일 10:00 ~ 17:00, 휴게시간: 12:00 ~ 13:30,
               주말 및 공휴일 휴무)
             </p>
             <p className="copy-right">
-              {/* © 2023 Quantus Technologies. All rights reserved. */}
+              © 2023 Quantus Technologies. All rights reserved.
             </p>
           </div>
           <div className="link-wrapper">

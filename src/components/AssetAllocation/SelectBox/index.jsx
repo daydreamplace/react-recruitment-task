@@ -34,7 +34,8 @@ const SelectBox = ({
           handleBlur();
         }}
         className={isActive ? "active" : ""}
-        defaultValue={value}
+        // defaultValue={value}
+        value={value}
       />
       <div className="icon" onClick={onClick}>
         {icon}
@@ -61,7 +62,7 @@ const SelectBoxContainer = styled.div`
   }
 
   input:hover {
-    /* border: 1px solid ${({ theme }) => theme.textColor}; */
+    border: 1px solid ${({ theme }) => theme.textColor};
   }
 
   .active {

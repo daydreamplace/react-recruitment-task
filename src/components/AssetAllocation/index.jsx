@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setAlloc } from "../../store/modules/alloc";
 import styled from "styled-components";
 import AssetAllocationSetting from "./AssetAllocationSetting";
 import AssetGroupsAdd from "./AssetGroupsAdd";
@@ -5,6 +8,12 @@ import SetPeriod from "./SetPeriod";
 import Button from "../Button";
 
 const AssetAllocation = () => {
+  const dispatch = useDispatch();
+  const { algorithm, periodic, band, assetsGroup, startDate, endDate } =
+    useSelector((state) => state.alloc);
+
+  // useEffect(() => {}, [algorithm]);
+
   return (
     <AssetAllocationContainer>
       <h3 className="title">자산배분 설정</h3>
