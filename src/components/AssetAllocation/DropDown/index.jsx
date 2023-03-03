@@ -1,5 +1,3 @@
-import { useSelector, useDispatch } from "react-redux";
-import { setAlloc } from "../../../store/modules/alloc";
 import styled from "styled-components";
 
 const DropDown = ({ dropDownList, onClick }) => {
