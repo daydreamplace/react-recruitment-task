@@ -47,12 +47,7 @@ const AssetGroupsAdd = () => {
         group.map((el, i) => {
           return (
             <>
-              <AssetGroup
-                key={el.id}
-                id={el.id}
-                // handleAdd={handleAsset}
-                removeAsset={removeAsset}
-              />
+              <AssetGroup key={el.id} id={el.id} />
               <Button title="삭제하기" color="black" onClick={removeAsset} />
               <Button title="추가하기" color="orange" onClick={handleAsset} />
             </>
