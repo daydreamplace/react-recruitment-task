@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setAlloc } from "../../../../store/modules/alloc";
 import styled from "styled-components";
 import { BsPercent } from "react-icons/bs";
-import SelectBox from "../../SelectBox";
+import SelectBox from "../../../SelectBox";
 
 const BandRebalancing = () => {
   const dispatch = useDispatch();

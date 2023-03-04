@@ -5,7 +5,9 @@ const initialState = {
   algorithm: localStorage.getItem("algorithm") || "",
   periodic: localStorage.getItem("periodic") || "",
   band: localStorage.getItem("band"),
-  assetsGroup: [{ asset: "", percent: 0 }],
+  assetsGroup: [],
+  asset: "",
+  percent: "",
   startDate: "",
   endDate: "",
 };

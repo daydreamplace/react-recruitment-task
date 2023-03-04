@@ -1,43 +1,85 @@
 import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setAlloc } from "../../../store/modules/alloc";
 import styled from "styled-components";
 import AssetGroup from "./AssetGroup";
 import Button from "../../Button";
-import SelectBox from "../SelectBox";
-import DropDown from "../DropDown";
 
 const ASSET_GROUP = localStorage.getItem("assetGroup");
+const IS_ASSET = localStorage.getItem("isAsset");
 
 const AssetGroupsAdd = () => {
-  const [add, setAdd] = useState(Number(ASSET_GROUP));
-  const [isAdd, setIsAdd] = useState(false);
+  const [isAsset, setIsAsset] = useState(false);
+  const dispatch = useDispatch();
+  const { assetsGroup } = useSelector((state) => state.alloc);
 
-  // useEffect(() => {
-  // ASSET_GROUP ? setIsAdd(false) : setIsAdd(true);
-  // }, [add]);
+  useEffect(() => {
+    if (!IS_ASSET) localStorage.setItem("isAsset", false);
+  }, [IS_ASSET]);
 
-  // console.log("자산군개수추가", add);
-  // console.log("로컬 자산 수", ASSET_GROUP);
-  console.log("자산 수가 0개면 false", isAdd);
-
-  const handleAdd = () => {
-    setIsAdd(true);
+  const handleAsset = () => {
+    setIsAsset(true);
+    localStorage.setItem("isAsset", true);
+    let arr = [...assetsGroup];
+    let assetObj = { id: arr.length + 1, asset: "", percent: 0 };
+    arr.push(assetObj);
+    dispatch(setAlloc({ type: "assetsGroup", value: arr }));
   };
 
-  const removeAsset = () => {
-    setIsAdd(false);
+  console.log(assetsGroup);
+
+  const removeAsset = (index) => {
+    if (assetsGroup.length === 1) {
+      setIsAsset(false);
+      localStorage.setItem("isAsset", false);
+    }
+    let arr = [...assetsGroup];
+    arr.splice(index, 1);
+    dispatch(setAlloc({ type: "assetsGroup", value: arr }));
   };
 
   return (
     <AssetGroupsAddContainer>
-      {isAdd ? (
-        <AssetGroup handleAdd={handleAdd} removeAsset={removeAsset} />
-      ) : (
-        <Button onClick={handleAdd} title="추가하기" color="orange" />
+      {assetsGroup.length > 0 &&
+        assetsGroup.map((el, i) => {
+          return (
+            <div className="asset-group">
+              <AssetGroup key={el.id} id={i + 1} assetIndex={i} />
+              <div className="button-wrapper">
+                <Button
+                  title="삭제하기"
+                  color="black"
+                  onClick={() => {
+                    removeAsset(i);
+                  }}
+                />
+                <Button title="추가하기" color="orange" onClick={handleAsset} />
+              </div>
+            </div>
+          );
+        })}
+      {(!localStorage.getItem("isAsset") || !isAsset) && (
+        <Button onClick={handleAsset} title="추가하기" color="orange" />
       )}
     </AssetGroupsAddContainer>
   );
 };
 
-const AssetGroupsAddContainer = styled.div``;
+const AssetGroupsAddContainer = styled.div`
+  .asset-group + .asset-group {
+    width: 650px;
+    margin-top: 50px;
+    padding-top: 60px;
+    border-top: 1px solid #fff;
+  }
+
+  .button-wrapper {
+    margin: 40px 0 20px;
+
+    div + div {
+      margin-left: 32px;
+    }
+  }
+`;
 
 export default AssetGroupsAdd;

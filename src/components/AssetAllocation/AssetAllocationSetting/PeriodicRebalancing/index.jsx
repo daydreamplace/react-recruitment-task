@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { setAlloc } from "../../../../store/modules/alloc";
 import styled from "styled-components";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
-import SelectBox from "../../SelectBox";
-import DropDown from "../../DropDown";
+import SelectBox from "../../../SelectBox";
+import DropDown from "../../../DropDown";
 import { periodicRebalancingList } from "../../../../constant/periodicrebalancing";
 
 const PERIODIC = localStorage.getItem("periodic");
@@ -29,6 +29,7 @@ const PeriodicRebalancing = () => {
     let menu = e.target.value;
     dispatch(setAlloc({ type: "periodic", value: menu }));
     localStorage.setItem("periodic", menu);
+    setIsDropDown(false);
   };
 
   return (

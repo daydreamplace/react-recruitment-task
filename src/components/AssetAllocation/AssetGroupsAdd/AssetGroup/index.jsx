@@ -1,45 +1,78 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setAlloc } from "../../../../store/modules/alloc";
 import styled from "styled-components";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import { BsPercent } from "react-icons/bs";
-import SelectBox from "../../SelectBox";
-import DropDown from "../../DropDown";
-import Button from "../../../Button";
+import SelectBox from "../../../SelectBox";
+import DropDown from "../../../DropDown";
 import { assetGroupsList } from "../../../../constant/assetgroups";
 
-const AssetGroup = ({ handleAdd, removeAsset }) => {
+const AssetGroup = ({ id, assetIndex }) => {
   const [isDropDown, setIsDropDown] = useState(false);
-
-  // useEffect(() => {
-  //   localStorage.getItem("assetGroup");
-  // }, []);
+  const dispatch = useDispatch();
+  const { assetsGroup } = useSelector((state) => state.alloc);
 
   const handleDropDown = () => {
     setIsDropDown(!isDropDown);
   };
 
+  const selectAsset = (e) => {
+    let value = e.target.value;
+    let newAssetGroup = assetsGroup.map((group, index) => {
+      if (index === assetIndex) {
+        return { ...group, asset: value };
+      }
+      return group;
+    });
+    dispatch(setAlloc({ type: "assetsGroup", value: newAssetGroup }));
+    setIsDropDown(false);
+  };
+
+  const onChange = (e) => {
+    const regex = /^[0-9]*$/;
+    let value = e.target.value;
+    if (0 > value || value > 100) return;
+    if (regex.test(value)) {
+      let newAssetGroup = assetsGroup.map((group, index) => {
+        if (index === assetIndex) {
+          return { ...group, percent: value };
+        }
+        return group;
+      });
+      dispatch(setAlloc({ type: "assetsGroup", value: newAssetGroup }));
+    }
+  };
+
   return (
     <AssetGroupContainer>
-      <h3 className="asset">자산 01</h3>
+      <h3 className="asset">자산 {id}</h3>
       <SelectBox
         readOnly={true}
         icon={isDropDown ? <IoIosArrowUp /> : <IoIosArrowDown />}
         onClick={handleDropDown}
         setIsDropDown={setIsDropDown}
+        value={assetsGroup[assetIndex].asset && assetsGroup[assetIndex].asset}
       />
       {isDropDown && (
         <DropDown
           setIsDropDown={setIsDropDown}
           dropDownList={assetGroupsList}
+          onClick={selectAsset}
         />
       )}
       <h3 className="percent">비중</h3>
-      <SelectBox icon={<BsPercent />} />
+      <SelectBox
+        icon={<BsPercent />}
+        onChange={onChange}
+        setIsDropDown={() => {
+          false;
+        }}
+        value={
+          assetsGroup[assetIndex].percent && assetsGroup[assetIndex].percent
+        }
+      />
       <p>0 ~ 100 까지 입력할 수 있습니다.</p>
-      <div className="button-wrapper">
-        <Button title="삭제하기" color="black" onClick={removeAsset} />
-        <Button title="추가하기" color="orange" onClick={handleAdd} />
-      </div>
     </AssetGroupContainer>
   );
 };

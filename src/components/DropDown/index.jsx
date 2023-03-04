@@ -1,13 +1,44 @@
+import { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 
 const DropDown = ({ dropDownList, onClick }) => {
+  const [visibleList, setVisibleList] = useState([]);
+  const [pageNum, setPageNum] = useState(1);
+  const observerRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setPageNum((prevPageNum) => prevPageNum + 1);
+        }
+      },
+      {
+        threshold: 1,
+      }
+    );
+    if (observerRef.current) {
+      observer.observe(observerRef.current);
+    }
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  useEffect(() => {
+    const newVisibleList = dropDownList.slice(0, pageNum * 10);
+    setVisibleList(newVisibleList);
+  }, [pageNum, dropDownList]);
+
   return (
     <DropDownContainer>
-      {dropDownList.map((option) => (
-        <div key={option.id} className="select-option" onClick={onClick}>
-          <input readOnly value={option.name} />
-        </div>
-      ))}
+      {visibleList.length > 0 &&
+        visibleList.map((option) => (
+          <div key={option.id} className="select-option" onClick={onClick}>
+            <input readOnly value={option.name} />
+          </div>
+        ))}
+      <div ref={observerRef} />
     </DropDownContainer>
   );
 };
@@ -17,6 +48,8 @@ const DropDownContainer = styled.div`
   display: inline-block;
   z-index: 2;
   margin-top: 9px;
+  max-height: 300px;
+  overflow: auto;
   background: ${({ theme }) => theme.backgroundColor};
   border: 1px solid ${({ theme }) => theme.darkGray};
   border-radius: 6px;
