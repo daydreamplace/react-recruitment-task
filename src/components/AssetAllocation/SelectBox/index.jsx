@@ -16,12 +16,12 @@ const SelectBox = ({
     setIsActive(true);
   };
 
-  const handleBlur = () => {
-    setIsActive(false);
-    setTimeout(() => {
-      setIsDropDown(false);
-    }, 100);
-  };
+  // const handleBlur = () => {
+  //   setIsActive(false);
+  //   setTimeout(() => {
+  //     setIsDropDown(false);
+  //   }, 200);
+  // };
 
   return (
     <SelectBoxContainer isActive={isActive}>
@@ -31,9 +31,9 @@ const SelectBox = ({
         onFocus={() => {
           handleFocus();
         }}
-        onBlur={() => {
-          handleBlur();
-        }}
+        // onBlur={() => {
+        //   handleBlur();
+        // }}
         className={isActive ? "active" : ""}
         placeholder={placeholder}
         onChange={onChange}

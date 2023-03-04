@@ -26,6 +26,8 @@ const AssetGroupsAdd = () => {
     dispatch(setAlloc({ type: "assetsGroup", value: arr }));
   };
 
+  console.log(assetsGroup);
+
   const removeAsset = (index) => {
     if (assetsGroup.length === 1) {
       setIsAsset(false);
@@ -42,15 +44,17 @@ const AssetGroupsAdd = () => {
         assetsGroup.map((el, i) => {
           return (
             <div className="asset-group">
-              <AssetGroup key={el.id} id={i + 1} />
-              <Button
-                title="삭제하기"
-                color="black"
-                onClick={() => {
-                  removeAsset(i);
-                }}
-              />
-              <Button title="추가하기" color="orange" onClick={handleAsset} />
+              <AssetGroup key={el.id} id={i + 1} assetIndex={i} />
+              <div className="button-wrapper">
+                <Button
+                  title="삭제하기"
+                  color="black"
+                  onClick={() => {
+                    removeAsset(i);
+                  }}
+                />
+                <Button title="추가하기" color="orange" onClick={handleAsset} />
+              </div>
             </div>
           );
         })}
@@ -63,7 +67,18 @@ const AssetGroupsAdd = () => {
 
 const AssetGroupsAddContainer = styled.div`
   .asset-group + .asset-group {
-    /* border-top: 1px solid #fff; */
+    width: 650px;
+    margin-top: 50px;
+    padding-top: 60px;
+    border-top: 1px solid #fff;
+  }
+
+  .button-wrapper {
+    margin: 40px 0 20px;
+
+    div + div {
+      margin-left: 32px;
+    }
   }
 `;
 

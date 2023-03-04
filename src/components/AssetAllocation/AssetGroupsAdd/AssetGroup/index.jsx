@@ -9,7 +9,7 @@ import DropDown from "../../DropDown";
 import Button from "../../../Button";
 import { assetGroupsList } from "../../../../constant/assetgroups";
 
-const AssetGroup = ({ id }) => {
+const AssetGroup = ({ id, assetIndex }) => {
   const [isDropDown, setIsDropDown] = useState(false);
   const dispatch = useDispatch();
   const { asset, assetsGroup } = useSelector((state) => state.alloc);
@@ -19,8 +19,18 @@ const AssetGroup = ({ id }) => {
   };
 
   const selectAsset = (e) => {
-    let asset = e.target.value;
-    dispatch(setAlloc({ type: "asset", value: asset }));
+    const selectValue = e.target.value;
+    console.log(selectValue);
+
+    let newAssetGroup = assetsGroup.map((group, index) => {
+      if (index === assetIndex) {
+        return { ...group, asset: selectValue };
+      }
+      return group;
+    });
+
+    dispatch(setAlloc({ type: "assetsGroup", value: newAssetGroup }));
+    setIsDropDown(false);
   };
 
   return (
@@ -31,7 +41,7 @@ const AssetGroup = ({ id }) => {
         icon={isDropDown ? <IoIosArrowUp /> : <IoIosArrowDown />}
         onClick={handleDropDown}
         setIsDropDown={setIsDropDown}
-        value={asset}
+        value={assetsGroup[assetIndex].asset && assetsGroup[assetIndex].asset}
       />
       {isDropDown && (
         <DropDown
