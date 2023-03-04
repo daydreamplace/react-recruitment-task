@@ -5,7 +5,6 @@ import styled from "styled-components";
 import AssetGroup from "./AssetGroup";
 import Button from "../../Button";
 
-const ASSET_GROUP = localStorage.getItem("assetGroup");
 const IS_ASSET = localStorage.getItem("isAsset");
 
 const AssetGroupsAdd = () => {
@@ -25,8 +24,6 @@ const AssetGroupsAdd = () => {
     arr.push(assetObj);
     dispatch(setAlloc({ type: "assetsGroup", value: arr }));
   };
-
-  console.log(assetsGroup);
 
   const removeAsset = (index) => {
     if (assetsGroup.length === 1) {
@@ -58,7 +55,8 @@ const AssetGroupsAdd = () => {
             </div>
           );
         })}
-      {(!localStorage.getItem("isAsset") || !isAsset) && (
+
+      {(!IS_ASSET || !isAsset) && (
         <Button onClick={handleAsset} title="추가하기" color="orange" />
       )}
     </AssetGroupsAddContainer>
