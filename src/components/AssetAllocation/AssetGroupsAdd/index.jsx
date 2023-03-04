@@ -10,7 +10,6 @@ const IS_ASSET = localStorage.getItem("isAsset");
 
 const AssetGroupsAdd = () => {
   const [isAsset, setIsAsset] = useState(false);
-  const [group, setGroup] = useState([]);
   const dispatch = useDispatch();
   const { assetsGroup } = useSelector((state) => state.alloc);
 
@@ -21,36 +20,38 @@ const AssetGroupsAdd = () => {
   const handleAsset = () => {
     setIsAsset(true);
     localStorage.setItem("isAsset", true);
-
-    let arr = [...group];
+    let arr = [...assetsGroup];
     let assetObj = { id: arr.length + 1, asset: "", percent: 0 };
     arr.push(assetObj);
-    setGroup(arr);
+    dispatch(setAlloc({ type: "assetsGroup", value: arr }));
   };
 
-  console.log(group);
-
-  const removeAsset = () => {
-    console.log(1);
-    setIsAsset(false);
-    localStorage.removeItem("isAsset");
-
-    let arr = [...group];
-    let assetObj = {};
-    arr.slice(assetObj);
-    setGroup(arr);
+  const removeAsset = (index) => {
+    if (assetsGroup.length === 1) {
+      setIsAsset(false);
+      localStorage.setItem("isAsset", false);
+    }
+    let arr = [...assetsGroup];
+    arr.splice(index, 1);
+    dispatch(setAlloc({ type: "assetsGroup", value: arr }));
   };
 
   return (
     <AssetGroupsAddContainer>
-      {group.length > 0 &&
-        group.map((el, i) => {
+      {assetsGroup.length > 0 &&
+        assetsGroup.map((el, i) => {
           return (
-            <>
-              <AssetGroup key={el.id} id={el.id} />
-              <Button title="삭제하기" color="black" onClick={removeAsset} />
+            <div className="asset-group">
+              <AssetGroup key={el.id} id={i + 1} />
+              <Button
+                title="삭제하기"
+                color="black"
+                onClick={() => {
+                  removeAsset(i);
+                }}
+              />
               <Button title="추가하기" color="orange" onClick={handleAsset} />
-            </>
+            </div>
           );
         })}
       {(!localStorage.getItem("isAsset") || !isAsset) && (
@@ -60,6 +61,10 @@ const AssetGroupsAdd = () => {
   );
 };
 
-const AssetGroupsAddContainer = styled.div``;
+const AssetGroupsAddContainer = styled.div`
+  .asset-group + .asset-group {
+    /* border-top: 1px solid #fff; */
+  }
+`;
 
 export default AssetGroupsAdd;
