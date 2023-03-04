@@ -9,15 +9,20 @@ const GlobalStyle = createGlobalStyle`
     margin-right: 0px;
     margin-left: 0px;
     background-color: ${({ theme }) => theme.backgroundColor};
-    color: ${({ theme }) => theme.textColor};
   }
   
+  svg {
+  color: ${({ theme }) => theme.orange};
+  }
+
   a {
+    color: ${({ theme }) => theme.textColor};
     text-decoration: none;
   }
 
   body {
-    margin:0 auto;
+    margin: 0 auto;
+    color: ${({ theme }) => theme.textColor};
     font-family: 'Noto Sans KR', sans-serif;
   }
 

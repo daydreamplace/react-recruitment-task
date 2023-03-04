@@ -6,6 +6,7 @@ import AssetAllocationSetting from "./AssetAllocationSetting";
 import AssetGroupsAdd from "./AssetGroupsAdd";
 import SetPeriod from "./SetPeriod";
 import Button from "../Button";
+import ProgressBar from "./ProgressBar";
 
 const AssetAllocation = () => {
   const dispatch = useDispatch();
@@ -31,7 +32,8 @@ const AssetAllocation = () => {
           />
         </div>
       </div>
-      <div className="progress-bar">백테스트</div>
+      {/* <div className="progress-bar">백테스트</div> */}
+      <ProgressBar />
     </AssetAllocationContainer>
   );
 };
@@ -65,12 +67,12 @@ const AssetAllocationContainer = styled.div`
       .reset-button {
         width: 160px;
         height: 42px;
-        border: 1px solid rgb(236, 97, 38);
+        border: 1px solid ${({ theme }) => theme.orange};
         border-radius: 25px;
         box-shadow: rgb(62 62 62) 0px 1px 2px 1px;
         color: rgb(207, 207, 207);
         font-size: 16px;
-        background-color: rgb(14, 14, 14);
+        background-color: ${({ theme }) => theme.backgroundColor};
         cursor: pointer;
       }
     }
