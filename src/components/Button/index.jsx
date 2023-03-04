@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Button = ({ color, title, onClick, disabled, className }) => {
+const Button = ({ color, title, onClick, disabled, className, icon }) => {
   return (
     <ButtonContainer
       color={color}
@@ -8,7 +8,9 @@ const Button = ({ color, title, onClick, disabled, className }) => {
       disabled={disabled}
       className={className}
     >
-      <div className="button">{title}</div>
+      <div className="button">
+        {title} {icon}
+      </div>
     </ButtonContainer>
   );
 };
