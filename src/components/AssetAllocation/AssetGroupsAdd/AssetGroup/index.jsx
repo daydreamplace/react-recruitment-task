@@ -12,7 +12,7 @@ import { assetGroupsList } from "../../../../constant/assetgroups";
 const AssetGroup = ({ id, assetIndex }) => {
   const [isDropDown, setIsDropDown] = useState(false);
   const dispatch = useDispatch();
-  const { asset, assetsGroup } = useSelector((state) => state.alloc);
+  const { assetsGroup } = useSelector((state) => state.alloc);
 
   const handleDropDown = () => {
     setIsDropDown(!isDropDown);
@@ -58,10 +58,6 @@ const AssetGroup = ({ id, assetIndex }) => {
         }}
       />
       <p>0 ~ 100 까지 입력할 수 있습니다.</p>
-      <div className="button-wrapper">
-        {/* <Button title="111삭제하기" color="black" onClick={removeAsset} />
-        <Button title="111추가하기" color="orange" onClick={handleAsset} /> */}
-      </div>
     </AssetGroupContainer>
   );
 };
