@@ -29,6 +29,7 @@ const PeriodicRebalancing = () => {
     let menu = e.target.value;
     dispatch(setAlloc({ type: "periodic", value: menu }));
     localStorage.setItem("periodic", menu);
+    setIsDropDown(false);
   };
 
   return (

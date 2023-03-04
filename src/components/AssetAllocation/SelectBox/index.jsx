@@ -51,11 +51,6 @@ const SelectBoxContainer = styled.div`
     border: 1px solid ${({ theme }) => theme.orange};
   }
 
-  /* .active {
-    outline: none;
-    border: 1px solid ${({ theme }) => theme.orange};
-  } */
-
   .icon {
     position: absolute;
     bottom: -1px;

@@ -5,12 +5,7 @@ const DropDown = ({ dropDownList, onClick }) => {
     <DropDownContainer>
       {dropDownList.length > 0 &&
         dropDownList.map((option) => (
-          <div
-            key={option.id}
-            // value={op}
-            className="select-option"
-            onClick={onClick}
-          >
+          <div key={option.id} className="select-option" onClick={onClick}>
             <input readOnly value={option.name} />
           </div>
         ))}

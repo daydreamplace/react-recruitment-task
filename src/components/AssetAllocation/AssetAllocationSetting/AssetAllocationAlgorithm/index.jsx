@@ -32,6 +32,7 @@ const AssetAllocationAlgorithm = () => {
     let menu = e.target.value;
     dispatch(setAlloc({ type: "algorithm", value: menu }));
     localStorage.setItem("algorithm", menu);
+    setIsDropDown(false);
   };
 
   return (
