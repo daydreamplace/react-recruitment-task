@@ -18,6 +18,8 @@ const DropDownContainer = styled.div`
   display: inline-block;
   z-index: 2;
   margin-top: 9px;
+  max-height: 300px;
+  overflow: auto;
   background: ${({ theme }) => theme.backgroundColor};
   border: 1px solid ${({ theme }) => theme.darkGray};
   border-radius: 6px;

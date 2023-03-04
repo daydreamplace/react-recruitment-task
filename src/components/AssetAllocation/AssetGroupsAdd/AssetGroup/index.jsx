@@ -1,12 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setAlloc } from "../../../../store/modules/alloc";
 import styled from "styled-components";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import { BsPercent } from "react-icons/bs";
-import SelectBox from "../../SelectBox";
-import DropDown from "../../DropDown";
-import Button from "../../../Button";
+import SelectBox from "../../../SelectBox";
+import DropDown from "../../../DropDown";
 import { assetGroupsList } from "../../../../constant/assetgroups";
 
 const AssetGroup = ({ id, assetIndex }) => {
@@ -20,7 +19,6 @@ const AssetGroup = ({ id, assetIndex }) => {
 
   const selectAsset = (e) => {
     const selectValue = e.target.value;
-    console.log(selectValue);
 
     let newAssetGroup = assetsGroup.map((group, index) => {
       if (index === assetIndex) {
@@ -28,9 +26,23 @@ const AssetGroup = ({ id, assetIndex }) => {
       }
       return group;
     });
-
     dispatch(setAlloc({ type: "assetsGroup", value: newAssetGroup }));
     setIsDropDown(false);
+  };
+
+  const onChange = (e) => {
+    const regex = /^[0-9]*$/;
+    let value = e.target.value;
+    if (0 > value || value > 100) return;
+    if (regex.test(value)) {
+      let newAssetGroup = assetsGroup.map((group, index) => {
+        if (index === assetIndex) {
+          return { ...group, percent: value };
+        }
+        return group;
+      });
+      dispatch(setAlloc({ type: "assetsGroup", value: newAssetGroup }));
+    }
   };
 
   return (
@@ -53,9 +65,13 @@ const AssetGroup = ({ id, assetIndex }) => {
       <h3 className="percent">비중</h3>
       <SelectBox
         icon={<BsPercent />}
+        onChange={onChange}
         setIsDropDown={() => {
           false;
         }}
+        value={
+          assetsGroup[assetIndex].percent && assetsGroup[assetIndex].percent
+        }
       />
       <p>0 ~ 100 까지 입력할 수 있습니다.</p>
     </AssetGroupContainer>

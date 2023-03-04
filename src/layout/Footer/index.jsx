@@ -7,8 +7,8 @@ const Footer = () => {
       <FooterContainer>
         <div className="content-wrapper">
           <div className="info-wrapper">
-            {/* <img src={logo} alt="logo" />
-            <p className="title">주식회사 퀀터스테크놀로지스</p> */}
+            <img src={logo} alt="logo" />
+            <p className="title">주식회사 퀀터스테크놀로지스</p>
             <p>
               대표자명: 이재민 ┃ 주소: 서울특별시 강남구 선릉로 93길 54, 6층
               6062호 (역삼동, 일환빌딩)

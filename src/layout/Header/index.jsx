@@ -22,7 +22,7 @@ const Header = () => {
     <Positioner>
       <HeaderContainer>
         <header>
-          {/* <img src={logo} alt="logo" /> */}
+          <img src={logo} alt="logo" />
           <div className="button-wrapper">
             <div className="level">
               {levelList.map((level) => (
