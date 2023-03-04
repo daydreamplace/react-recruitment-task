@@ -5,7 +5,6 @@ import styled from "styled-components";
 import AssetGroup from "./AssetGroup";
 import Button from "../../Button";
 
-const ASSETS_GROUP = localStorage.getItem("assetsGroup");
 const IS_ASSET = localStorage.getItem("isAsset");
 
 const AssetGroupsAdd = () => {
@@ -56,6 +55,7 @@ const AssetGroupsAdd = () => {
             </div>
           );
         })}
+
       {(!IS_ASSET || !isAsset) && (
         <Button onClick={handleAsset} title="추가하기" color="orange" />
       )}
