@@ -18,11 +18,10 @@ const AssetGroup = ({ id, assetIndex }) => {
   };
 
   const selectAsset = (e) => {
-    const selectValue = e.target.value;
-
+    let value = e.target.value;
     let newAssetGroup = assetsGroup.map((group, index) => {
       if (index === assetIndex) {
-        return { ...group, asset: selectValue };
+        return { ...group, asset: value };
       }
       return group;
     });
