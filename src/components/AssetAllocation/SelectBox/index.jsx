@@ -8,33 +8,12 @@ const SelectBox = ({
   onChange,
   placeholder,
   value,
-  setIsDropDown,
 }) => {
-  const [isActive, setIsActive] = useState(false);
-
-  const handleFocus = () => {
-    setIsActive(true);
-  };
-
-  // const handleBlur = () => {
-  //   setIsActive(false);
-  //   setTimeout(() => {
-  //     setIsDropDown(false);
-  //   }, 200);
-  // };
-
   return (
-    <SelectBoxContainer isActive={isActive}>
+    <SelectBoxContainer>
       <input
         readOnly={readOnly}
         onClick={onClick}
-        onFocus={() => {
-          handleFocus();
-        }}
-        // onBlur={() => {
-        //   handleBlur();
-        // }}
-        className={isActive ? "active" : ""}
         placeholder={placeholder}
         onChange={onChange}
         value={value}
