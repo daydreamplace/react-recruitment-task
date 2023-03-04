@@ -9,10 +9,10 @@ import DropDown from "../../DropDown";
 import Button from "../../../Button";
 import { assetGroupsList } from "../../../../constant/assetgroups";
 
-const AssetGroup = ({ handleAsset, removeAsset }) => {
+const AssetGroup = ({ id }) => {
   const [isDropDown, setIsDropDown] = useState(false);
   const dispatch = useDispatch();
-  const { asset } = useSelector((state) => state.alloc);
+  const { asset, assetsGroup } = useSelector((state) => state.alloc);
 
   const handleDropDown = () => {
     setIsDropDown(!isDropDown);
@@ -25,7 +25,7 @@ const AssetGroup = ({ handleAsset, removeAsset }) => {
 
   return (
     <AssetGroupContainer>
-      <h3 className="asset">자산 01</h3>
+      <h3 className="asset">자산 {id}</h3>
       <SelectBox
         readOnly={true}
         icon={isDropDown ? <IoIosArrowUp /> : <IoIosArrowDown />}
@@ -49,8 +49,8 @@ const AssetGroup = ({ handleAsset, removeAsset }) => {
       />
       <p>0 ~ 100 까지 입력할 수 있습니다.</p>
       <div className="button-wrapper">
-        <Button title="삭제하기" color="black" onClick={removeAsset} />
-        <Button title="추가하기" color="orange" onClick={handleAsset} />
+        {/* <Button title="111삭제하기" color="black" onClick={removeAsset} />
+        <Button title="111추가하기" color="orange" onClick={handleAsset} /> */}
       </div>
     </AssetGroupContainer>
   );

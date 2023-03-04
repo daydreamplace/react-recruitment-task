@@ -9,27 +9,56 @@ const ASSET_GROUP = localStorage.getItem("assetGroup");
 const IS_ASSET = localStorage.getItem("isAsset");
 
 const AssetGroupsAdd = () => {
-  const [add, setAdd] = useState(Number(ASSET_GROUP));
   const [isAsset, setIsAsset] = useState(false);
   const [group, setGroup] = useState([]);
   const dispatch = useDispatch();
   const { assetsGroup } = useSelector((state) => state.alloc);
 
+  useEffect(() => {
+    if (!IS_ASSET) localStorage.setItem("isAsset", false);
+  }, [IS_ASSET]);
+
   const handleAsset = () => {
     setIsAsset(true);
     localStorage.setItem("isAsset", true);
+
+    let arr = [...group];
+    let assetObj = { id: arr.length + 1, asset: "", percent: 0 };
+    arr.push(assetObj);
+    setGroup(arr);
   };
 
+  console.log(group);
+
   const removeAsset = () => {
+    console.log(1);
     setIsAsset(false);
     localStorage.removeItem("isAsset");
+
+    let arr = [...group];
+    let assetObj = {};
+    arr.slice(assetObj);
+    setGroup(arr);
   };
 
   return (
     <AssetGroupsAddContainer>
-      {localStorage.getItem("isAsset") || isAsset ? (
-        <AssetGroup handleAdd={handleAsset} removeAsset={removeAsset} />
-      ) : (
+      {group.length > 0 &&
+        group.map((el, i) => {
+          return (
+            <>
+              <AssetGroup
+                key={el.id}
+                id={el.id}
+                // handleAdd={handleAsset}
+                removeAsset={removeAsset}
+              />
+              <Button title="삭제하기" color="black" onClick={removeAsset} />
+              <Button title="추가하기" color="orange" onClick={handleAsset} />
+            </>
+          );
+        })}
+      {(!localStorage.getItem("isAsset") || !isAsset) && (
         <Button onClick={handleAsset} title="추가하기" color="orange" />
       )}
     </AssetGroupsAddContainer>
