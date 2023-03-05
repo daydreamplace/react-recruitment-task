@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setAlloc } from "../../../store/modules/alloc";
 import styled from "styled-components";
 import DatePicker from "react-datepicker";
 import { IoCalendarOutline } from "react-icons/io5";
@@ -8,8 +10,28 @@ import { yearList, monthList } from "../../../constant/calendar";
 import "react-datepicker/dist/react-datepicker.css";
 
 const SetPeriod = () => {
-  const [startDate, setStartDate] = useState(new Date("2003/01/01"));
-  const [endDate, setEndDate] = useState(new Date());
+  const dispatch = useDispatch();
+  const { startDate, endDate } = useSelector((state) => state.alloc);
+
+  const handleStart = (date) => {
+    dispatch(
+      setAlloc({
+        type: "startDate",
+        value: date,
+      })
+    );
+    localStorage.setItem("startDate", date);
+  };
+
+  const handleEnd = (date) => {
+    dispatch(
+      setAlloc({
+        type: "endDate",
+        value: date,
+      })
+    );
+    localStorage.setItem("endDate", date);
+  };
 
   return (
     <SetPeriodContainer>
@@ -46,7 +68,7 @@ const SetPeriod = () => {
           dateFormat="yyyy.MM.dd"
           selected={startDate}
           locale={ko}
-          onChange={(date) => setStartDate(date)}
+          onChange={(date) => handleStart(date)}
         />
         <div className="icon">
           <IoCalendarOutline />
@@ -85,7 +107,7 @@ const SetPeriod = () => {
           dateFormat="yyyy.MM.dd"
           selected={endDate}
           locale={ko}
-          onChange={(date) => setEndDate(date)}
+          onChange={(date) => handleEnd(date)}
           maxDate={new Date()}
         />
         <div className="icon">
