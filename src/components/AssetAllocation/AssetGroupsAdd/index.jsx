@@ -5,7 +5,7 @@ import styled from "styled-components";
 import AssetGroup from "./AssetGroup";
 import Button from "../../Button";
 
-const IS_ASSET = localStorage.getItem("isAsset");
+const IS_ASSET = Boolean(localStorage.getItem("isAsset"));
 
 const AssetGroupsAdd = () => {
   const [isAsset, setIsAsset] = useState(false);
@@ -37,7 +37,7 @@ const AssetGroupsAdd = () => {
 
   return (
     <AssetGroupsAddContainer>
-      {assetsGroup.length > 0 &&
+      {IS_ASSET &&
         assetsGroup.map((el, i) => {
           return (
             <div className="asset-group">
