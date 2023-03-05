@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setAlloc } from "../../store/modules/alloc";
 import styled from "styled-components";
 import Button from "../Button";
 
 const STRATEGY_TITLE = localStorage.getItem("strategyTitle");
 
 const StrategyTitle = () => {
-  const [title, setTitle] = useState(STRATEGY_TITLE || "");
   const [isTitle, setIsTitle] = useState(Boolean(STRATEGY_TITLE));
+  const dispatch = useDispatch();
+  const { title } = useSelector((state) => state.alloc);
 
   useEffect(() => {
     localStorage.setItem("strategyTitle", title);
@@ -14,7 +17,7 @@ const StrategyTitle = () => {
 
   const handleTitle = (e) => {
     let title = e.target.value;
-    setTitle(title);
+    dispatch(setAlloc({ type: "title", value: title }));
     title.length >= 1 ? setIsTitle(true) : setIsTitle(false);
   };
 

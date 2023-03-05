@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  title: "",
+  title: localStorage.getItem("strategyTitle") || "",
   algorithm: localStorage.getItem("algorithm") || "",
   periodic: localStorage.getItem("periodic") || "",
   band: localStorage.getItem("band"),

@@ -55,7 +55,6 @@ const AssetGroupsAdd = () => {
             </div>
           );
         })}
-
       {(!IS_ASSET || !isAsset) && (
         <Button onClick={handleAsset} title="추가하기" color="orange" />
       )}
