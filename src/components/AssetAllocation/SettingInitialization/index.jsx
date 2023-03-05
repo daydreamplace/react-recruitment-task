@@ -8,6 +8,8 @@ const SettingInitailization = () => {
     localStorage.removeItem("algorithm");
     localStorage.removeItem("periodic");
     localStorage.removeItem("band");
+    localStorage.removeItem("startDate");
+    localStorage.removeItem("endDate");
   };
 
   return (

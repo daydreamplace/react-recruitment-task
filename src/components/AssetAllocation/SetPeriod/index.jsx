@@ -9,27 +9,38 @@ import { getMonth, getYear } from "date-fns";
 import { yearList, monthList } from "../../../constant/calendar";
 import "react-datepicker/dist/react-datepicker.css";
 
+const START_DATE = localStorage.getItem("startDate");
+const END_DATE = localStorage.getItem("endDate");
+
 const SetPeriod = () => {
-  const dispatch = useDispatch();
-  const { startDate, endDate } = useSelector((state) => state.alloc);
+  const [startDate, setStartDate] = useState(
+    new Date(START_DATE ? START_DATE : "2003-01-01")
+  );
+  const [endDate, setEndDate] = useState(
+    END_DATE ? new Date(END_DATE) : new Date()
+  );
+  // const dispatch = useDispatch();
+  // const { startDate, endDate } = useSelector((state) => state.alloc);
 
   const handleStart = (date) => {
-    dispatch(
-      setAlloc({
-        type: "startDate",
-        value: date,
-      })
-    );
+    // dispatch(
+    //   setAlloc({
+    //     type: "startDate",
+    //     value: date,
+    //   })
+    // );
+    setStartDate(date);
     localStorage.setItem("startDate", date);
   };
 
   const handleEnd = (date) => {
-    dispatch(
-      setAlloc({
-        type: "endDate",
-        value: date,
-      })
-    );
+    // dispatch(
+    //   setAlloc({
+    //     type: "endDate",
+    //     value: date,
+    //   })
+    // );
+    setEndDate(date);
     localStorage.setItem("endDate", date);
   };
 
