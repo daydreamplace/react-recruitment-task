@@ -1,20 +1,11 @@
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { setAlloc } from "../../store/modules/alloc";
 import styled from "styled-components";
 import AssetAllocationSetting from "./AssetAllocationSetting";
 import AssetGroupsAdd from "./AssetGroupsAdd";
 import SetPeriod from "./SetPeriod";
-import Button from "../Button";
+import SettingInitailization from "./SettingInitialization";
 import ProgressBar from "./ProgressBar";
 
 const AssetAllocation = () => {
-  const dispatch = useDispatch();
-  const { algorithm, periodic, band, assetsGroup, startDate, endDate } =
-    useSelector((state) => state.alloc);
-
-  // useEffect(() => {}, [algorithm]);
-
   return (
     <AssetAllocationContainer>
       <h3 className="title">자산배분 설정</h3>
@@ -23,16 +14,7 @@ const AssetAllocation = () => {
       <AssetGroupsAdd />
       <h3 className="title margin">기간 설정</h3>
       <SetPeriod />
-      <div className="button-positioner">
-        <div className="button-wrapper">
-          <Button
-            title="↩ 설정 값 초기화"
-            color="black"
-            className="reset-button"
-          />
-        </div>
-      </div>
-      {/* <div className="progress-bar">백테스트</div> */}
+      <SettingInitailization />
       <ProgressBar />
     </AssetAllocationContainer>
   );
@@ -52,30 +34,6 @@ const AssetAllocationContainer = styled.div`
 
   .margin {
     margin: 80px 0px 16px;
-  }
-
-  .button-positioner {
-    display: inline-block;
-    width: 100%;
-    position: sticky;
-    top: 1120px;
-    margin-left: 1030px;
-
-    .button-wrapper {
-      position: relative;
-
-      .reset-button {
-        width: 160px;
-        height: 42px;
-        border: 1px solid ${({ theme }) => theme.orange};
-        border-radius: 25px;
-        box-shadow: rgb(62 62 62) 0px 1px 2px 1px;
-        color: rgb(207, 207, 207);
-        font-size: 16px;
-        background-color: ${({ theme }) => theme.backgroundColor};
-        cursor: pointer;
-      }
-    }
   }
 
   .progress-bar {
