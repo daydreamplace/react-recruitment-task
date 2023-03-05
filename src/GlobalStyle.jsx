@@ -8,16 +8,32 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     margin-right: 0px;
     margin-left: 0px;
-    background-color: #000;
-    color: #fff;
+    background-color: ${({ theme }) => theme.backgroundColor};
   }
   
+  svg {
+  color: ${({ theme }) => theme.orange};
+  }
+
   a {
+    color: ${({ theme }) => theme.textColor};
     text-decoration: none;
   }
 
   body {
-    margin:0 auto;
+    margin: 0 auto;
+    color: ${({ theme }) => theme.textColor};
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+
+  input {
+    border: 0;
+    outline: 0;
+  }
+
+  button{
+    border: 0;
+    outline: 0;
     font-family: 'Noto Sans KR', sans-serif;
   }
 `;
