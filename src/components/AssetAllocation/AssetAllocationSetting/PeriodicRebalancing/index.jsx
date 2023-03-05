@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setAlloc } from "../../../../store/modules/alloc";
 import styled from "styled-components";
@@ -11,12 +11,9 @@ const PERIODIC = localStorage.getItem("periodic");
 
 const PeriodicRebalancing = () => {
   const [isDropDown, setIsDropDown] = useState(false);
+  const clickRef = useRef();
   const dispatch = useDispatch();
   const { periodic } = useSelector((state) => state.alloc);
-
-  const handleDropDown = () => {
-    setIsDropDown(!isDropDown);
-  };
 
   useEffect(() => {
     if (!PERIODIC)
@@ -24,6 +21,26 @@ const PeriodicRebalancing = () => {
         setAlloc({ type: "periodic", value: periodicRebalancingList[0].name })
       );
   }, [PERIODIC]);
+
+  useEffect(() => {
+    const clickOutside = (e) => {
+      if (
+        isDropDown &&
+        clickRef.current &&
+        !clickRef.current.contains(e.target)
+      ) {
+        setIsDropDown(false);
+      }
+    };
+    window.addEventListener("mousedown", clickOutside);
+    return () => {
+      window.removeEventListener("mousedown", clickOutside);
+    };
+  }, [isDropDown]);
+
+  const handleDropDown = () => {
+    setIsDropDown(!isDropDown);
+  };
 
   const selectMenu = (e) => {
     let menu = e.target.value;
@@ -48,13 +65,15 @@ const PeriodicRebalancing = () => {
         setIsDropDown={setIsDropDown}
         value={periodic}
       />
-      {isDropDown && (
-        <DropDown
-          setIsDropDown={setIsDropDown}
-          dropDownList={periodicRebalancingList}
-          onClick={selectMenu}
-        />
-      )}
+      <div ref={clickRef}>
+        {isDropDown && (
+          <DropDown
+            setIsDropDown={setIsDropDown}
+            dropDownList={periodicRebalancingList}
+            onClick={selectMenu}
+          />
+        )}
+      </div>
     </PeriodicRebalancingContainer>
   );
 };
