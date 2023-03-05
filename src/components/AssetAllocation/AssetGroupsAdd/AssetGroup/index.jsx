@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setAlloc } from "../../../../store/modules/alloc";
 import styled from "styled-components";
@@ -10,8 +10,25 @@ import { assetGroupsList } from "../../../../constant/assetgroups";
 
 const AssetGroup = ({ id, assetIndex }) => {
   const [isDropDown, setIsDropDown] = useState(false);
+  const clickRef = useRef();
   const dispatch = useDispatch();
   const { assetsGroup } = useSelector((state) => state.alloc);
+
+  useEffect(() => {
+    const clickOutside = (e) => {
+      if (
+        isDropDown &&
+        clickRef.current &&
+        !clickRef.current.contains(e.target)
+      ) {
+        setIsDropDown(false);
+      }
+    };
+    window.addEventListener("mousedown", clickOutside);
+    return () => {
+      window.removeEventListener("mousedown", clickOutside);
+    };
+  }, [isDropDown]);
 
   const handleDropDown = () => {
     setIsDropDown(!isDropDown);
@@ -56,13 +73,15 @@ const AssetGroup = ({ id, assetIndex }) => {
         setIsDropDown={setIsDropDown}
         value={assetsGroup[assetIndex].asset && assetsGroup[assetIndex].asset}
       />
-      {isDropDown && (
-        <DropDown
-          setIsDropDown={setIsDropDown}
-          dropDownList={assetGroupsList}
-          onClick={selectAsset}
-        />
-      )}
+      <div ref={clickRef}>
+        {isDropDown && (
+          <DropDown
+            setIsDropDown={setIsDropDown}
+            dropDownList={assetGroupsList}
+            onClick={selectAsset}
+          />
+        )}
+      </div>
       <h3 className="percent">비중</h3>
       <SelectBox
         icon={<BsPercent />}

@@ -37,8 +37,6 @@ const AssetGroupsAdd = () => {
     dispatch(setAlloc({ type: "assetsGroup", value: arr }));
   };
 
-  console.log(assetsGroup.length);
-
   return (
     <AssetGroupsAddContainer>
       {assetsGroup.length > 0 &&
