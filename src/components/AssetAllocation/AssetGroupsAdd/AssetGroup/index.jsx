@@ -27,6 +27,7 @@ const AssetGroup = ({ id, assetIndex }) => {
     });
     dispatch(setAlloc({ type: "assetsGroup", value: newAssetGroup }));
     setIsDropDown(false);
+    localStorage.setItem();
   };
 
   const onChange = (e) => {
@@ -41,6 +42,7 @@ const AssetGroup = ({ id, assetIndex }) => {
         return group;
       });
       dispatch(setAlloc({ type: "assetsGroup", value: newAssetGroup }));
+      localStorage.setItem();
     }
   };
 

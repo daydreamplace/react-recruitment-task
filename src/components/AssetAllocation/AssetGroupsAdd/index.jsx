@@ -6,6 +6,7 @@ import AssetGroup from "./AssetGroup";
 import Button from "../../Button";
 
 const IS_ASSET = Boolean(localStorage.getItem("isAsset"));
+const ASSET_GROUP = localStorage.getItem("assetsGroup");
 
 const AssetGroupsAdd = () => {
   const [isAsset, setIsAsset] = useState(false);
@@ -23,6 +24,7 @@ const AssetGroupsAdd = () => {
     let assetObj = { id: arr.length + 1, asset: "", percent: 0 };
     arr.push(assetObj);
     dispatch(setAlloc({ type: "assetsGroup", value: arr }));
+    localStorage.setItem("assetsGroup", arr);
   };
 
   const removeAsset = (index) => {
@@ -35,9 +37,11 @@ const AssetGroupsAdd = () => {
     dispatch(setAlloc({ type: "assetsGroup", value: arr }));
   };
 
+  console.log(assetsGroup.length);
+
   return (
     <AssetGroupsAddContainer>
-      {IS_ASSET &&
+      {assetsGroup.length > 0 &&
         assetsGroup.map((el, i) => {
           return (
             <div className="asset-group">
