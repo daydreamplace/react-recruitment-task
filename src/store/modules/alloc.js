@@ -8,8 +8,12 @@ const initialState = {
   assetsGroup: [],
   asset: "",
   percent: "",
-  startDate: "",
-  endDate: "",
+  startDate: localStorage.getItem("startDate")
+    ? new Date(localStorage.getItem("startDate"))
+    : new Date("2003-01-01"),
+  endDate: localStorage.getItem("endDate")
+    ? new Date(localStorage.getItem("endDate"))
+    : new Date(),
 };
 
 const alloc = createSlice({
