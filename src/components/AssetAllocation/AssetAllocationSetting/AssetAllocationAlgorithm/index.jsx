@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setAlloc } from "../../../../store/modules/alloc";
 import styled from "styled-components";
@@ -11,6 +11,7 @@ const ALGORITHM = localStorage.getItem("algorithm");
 
 const AssetAllocationAlgorithm = () => {
   const [isDropDown, setIsDropDown] = useState(false);
+  const clickRef = useRef();
   const dispatch = useDispatch();
   const { algorithm } = useSelector((state) => state.alloc);
 
@@ -23,6 +24,22 @@ const AssetAllocationAlgorithm = () => {
         })
       );
   }, [ALGORITHM]);
+
+  useEffect(() => {
+    const clickOutside = (e) => {
+      if (
+        isDropDown &&
+        clickRef.current &&
+        !clickRef.current.contains(e.target)
+      ) {
+        setIsDropDown(false);
+      }
+    };
+    window.addEventListener("mousedown", clickOutside);
+    return () => {
+      window.removeEventListener("mousedown", clickOutside);
+    };
+  }, [isDropDown]);
 
   const handleDropDown = () => {
     setIsDropDown(!isDropDown);
@@ -51,13 +68,15 @@ const AssetAllocationAlgorithm = () => {
         setIsDropDown={setIsDropDown}
         value={algorithm}
       />
-      {isDropDown && (
-        <DropDown
-          setIsDropDown={setIsDropDown}
-          dropDownList={assetAllocationAlgorithmList}
-          onClick={selectMenu}
-        />
-      )}
+      <div ref={clickRef}>
+        {isDropDown && (
+          <DropDown
+            setIsDropDown={setIsDropDown}
+            dropDownList={assetAllocationAlgorithmList}
+            onClick={selectMenu}
+          />
+        )}
+      </div>
     </AssetAllocationAlgorithmContainer>
   );
 };
