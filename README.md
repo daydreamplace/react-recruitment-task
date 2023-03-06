@@ -22,14 +22,14 @@ git clone https://github.com/daydreamplace/react-task.git
 
 <br />
 
-2.  Navigate to a folder and download the package.
+2.  Navigate to a folder
 ```
 cd react-task
 ```
 
 <br />
 
-3.  npm install
+3.  Download the package.
 ```
 npm i
 ```
@@ -61,7 +61,7 @@ src
 
 `assets` : image assets
  <br />
- `components` : reuse components
+`components` : reuse components
 <br />
 `constant` : manage unchanging values
 <br />
