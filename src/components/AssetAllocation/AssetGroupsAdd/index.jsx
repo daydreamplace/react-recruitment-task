@@ -42,8 +42,8 @@ const AssetGroupsAdd = () => {
       {assetsGroup.length > 0 &&
         assetsGroup.map((el, i) => {
           return (
-            <div className="asset-group">
-              <AssetGroup key={el.id} id={i + 1} assetIndex={i} />
+            <div key={el.id} className="asset-group">
+              <AssetGroup id={i + 1} assetIndex={i} />
               <div className="button-wrapper">
                 <Button
                   title="삭제하기"
