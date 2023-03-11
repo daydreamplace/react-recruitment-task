@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import axios from "axios";
 import { setAlloc } from "../../store/modules/alloc";
 import styled from "styled-components";
 import Button from "../Button";
@@ -20,12 +19,6 @@ const StrategyTitle = () => {
     let title = e.target.value;
     dispatch(setAlloc({ type: "title", value: title }));
     title.length >= 1 ? setIsTitle(true) : setIsTitle(false);
-  };
-
-  const strategySave = async () => {
-    try {
-      const data = await axios.post();
-    } catch (error) {}
   };
 
   return (

@@ -6,7 +6,6 @@ import AssetGroup from "./AssetGroup";
 import Button from "../../Button";
 
 const IS_ASSET = Boolean(localStorage.getItem("isAsset"));
-const ASSET_GROUP = localStorage.getItem("assetsGroup");
 
 const AssetGroupsAdd = () => {
   const [isAsset, setIsAsset] = useState(false);
