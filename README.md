@@ -22,7 +22,7 @@ git clone https://github.com/daydreamplace/react-task.git
 
 <br />
 
-2.  Navigate to a folder
+2.  Navigate to a folder.
 ```
 cd react-task
 ```
