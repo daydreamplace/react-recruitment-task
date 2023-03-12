@@ -6,7 +6,6 @@ import AssetGroup from "./AssetGroup";
 import Button from "../../Button";
 
 const IS_ASSET = Boolean(localStorage.getItem("isAsset"));
-const ASSET_GROUP = localStorage.getItem("assetsGroup");
 
 const AssetGroupsAdd = () => {
   const [isAsset, setIsAsset] = useState(false);
@@ -42,8 +41,8 @@ const AssetGroupsAdd = () => {
       {assetsGroup.length > 0 &&
         assetsGroup.map((el, i) => {
           return (
-            <div className="asset-group">
-              <AssetGroup key={el.id} id={i + 1} assetIndex={i} />
+            <div key={el.id} className="asset-group">
+              <AssetGroup id={i + 1} assetIndex={i} />
               <div className="button-wrapper">
                 <Button
                   title="삭제하기"

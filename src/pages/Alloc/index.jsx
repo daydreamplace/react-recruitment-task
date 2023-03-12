@@ -22,7 +22,6 @@ const AllocContainer = styled.div`
   position: relative;
   height: 100%;
   min-height: 900px;
-  background: rgb(14, 14, 14);
 `;
 
 export default Alloc;

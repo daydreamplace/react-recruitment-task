@@ -67,7 +67,7 @@ src
 <br />
 `layout` : header, footer layout and function
 <br />
-`pages` : , main page layout and function
+`pages` : main page layout and function
 <br />
 `store` : set redux store
 <br />

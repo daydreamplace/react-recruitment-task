@@ -29,10 +29,10 @@ const SettingInitailization = () => {
 };
 
 const Positioner = styled.div`
-  display: inline-block;
-  width: 100%;
   position: sticky;
   top: 1120px;
+  display: inline-block;
+  width: 100%;
   margin-left: 1030px;
 `;
 
