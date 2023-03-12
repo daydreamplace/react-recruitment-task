@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setAlloc } from "../../../store/modules/alloc";
 import styled from "styled-components";

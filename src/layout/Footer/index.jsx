@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import logo from "../../assets/logo.png";
+import { footerList } from "../../constant/footer";
 
 const Footer = () => {
   return (
@@ -24,27 +25,16 @@ const Footer = () => {
             </p>
           </div>
           <div className="link-wrapper">
-            <a
-              className="cafe-link"
-              href="https://cafe.naver.com/quantus"
-              target="_blank"
-            >
-              공식 카페 바로가기
-            </a>
-            <a
-              className="link"
-              href="https://www.quantus.kr/service/useservice"
-              target="_blank"
-            >
-              개인정보처리방침
-            </a>
-            <a
-              className="link"
-              href="https://www.quantus.kr/service"
-              target="_blank"
-            >
-              이용약관
-            </a>
+            {footerList.map((el) => (
+              <a
+                key={el.title}
+                href={el.link}
+                className={el.className}
+                target="_blank"
+              >
+                {el.title}
+              </a>
+            ))}
           </div>
         </div>
       </FooterContainer>

@@ -119,14 +119,6 @@ const AssetGroupContainer = styled.div`
     color: ${({ theme }) => theme.lightGray};
     font-size: 12px;
   }
-
-  .button-wrapper {
-    margin: 40px 0 20px;
-
-    div + div {
-      margin-left: 32px;
-    }
-  }
 `;
 
 export default AssetGroup;
